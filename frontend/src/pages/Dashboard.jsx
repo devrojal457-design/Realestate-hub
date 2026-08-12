@@ -72,7 +72,7 @@ const Dashboard = () => {
                     />
                     <span className="font-medium">{p.title}</span>
                   </td>
-                  <td className="p-4">${p.price?.toLocaleString()}</td>
+                  <td className="p-4">₹{p.price?.toLocaleString('en-IN')}</td>
                   <td className="p-4 capitalize">{p.type}</td>
                   <td className="p-4">
                     <span

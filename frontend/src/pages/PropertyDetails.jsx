@@ -132,7 +132,7 @@ const PropertyDetails = () => {
             </div>
 
             <p className="text-primary text-3xl font-bold mt-3">
-              ${property.price?.toLocaleString()}
+              ₹{property.price?.toLocaleString('en-IN')}
               {property.type === "rent" && <span className="text-base font-normal">/mo</span>}
             </p>
 
