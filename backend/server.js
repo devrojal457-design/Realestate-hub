@@ -37,15 +37,6 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "ok", message: "RealEstate Hub API is running" });
 });
 
-// Serve frontend build in production (if present)
-if (process.env.NODE_ENV === "production") {
-  const frontendPath = path.join(__dirname, "..", "frontend", "dist");
-  app.use(express.static(frontendPath));
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(frontendPath, "index.html"));
-  });
-}
-
 // 404 handler for unknown API routes
 app.use("/api", (req, res, next) => {
   res.status(404).json({ message: "API route not found" });
