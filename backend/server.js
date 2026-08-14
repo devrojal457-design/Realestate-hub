@@ -17,7 +17,7 @@ const app = express();
 
 // Allowed frontend origins
 const allowedOrigins = [
-  process.env.CLIENT_URL, // set this in Render env vars
+  "https://realestate-hub-two.vercel.app", // hardcoded, no more env var dependency
   "http://localhost:3000",
   "http://localhost:5173", // agar Vite use kar raha hai
 ];
