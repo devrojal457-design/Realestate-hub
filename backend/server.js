@@ -15,12 +15,30 @@ connectDB();
 
 const app = express();
 
+// Allowed frontend origins
+const allowedOrigins = [
+  process.env.CLIENT_URL, // set this in Render env vars
+  "http://localhost:3000",
+  "http://localhost:5173", // agar Vite use kar raha hai
+];
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "*",
+    origin: function (origin, callback) {
+      // allow requests with no origin (like Postman, curl, mobile apps)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.log("Blocked by CORS:", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
